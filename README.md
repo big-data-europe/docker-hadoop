@@ -16,16 +16,28 @@ To deploy an example HDFS cluster, run:
 ```
   docker-compose up
 ```
+or
+```
+  docker-compose up -d
+```
+for interactive shell
 
-`docker-compose` creates a docker network that can be found by running `docker network list`, e.g. `dockerhadoop_default`.
+`docker-compose` creates a docker network that can be found by running `docker network list`, e.g. `docker-hadoop_default`.
 
-Run `docker network inspect` on the network (e.g. `dockerhadoop_default`) to find the IP the hadoop interfaces are published on. Access these interfaces with the following URLs:
+Run `docker network inspect` on the network (e.g. `docker-hadoop_default`) to find the IP the hadoop interfaces are published on. Access these interfaces with the following URLs:
 
 * Namenode: http://<dockerhadoop_IP_address>:50070/dfshealth.html#tab-overview
 * History server: http://<dockerhadoop_IP_address>:8188/applicationhistory
 * Datanode: http://<dockerhadoop_IP_address>:50075/
 * Nodemanager: http://<dockerhadoop_IP_address>:8042/node
 * Resource manager: http://<dockerhadoop_IP_address>:8088/
+to connect from host, use localhost on port number.
+* Datanode1: http://localhost:50076/
+* Datanode2: http://localhost:50077/
+* Datanode3: http://localhost:50078/
+
+after `docker ps` to get names of container, run
+`docker exec -ti <container name> /bin/bash` to attach to shell of containers
 
 ## Configure Environment Variables
 
