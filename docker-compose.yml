@@ -6,6 +6,7 @@ services:
     container_name: namenode
     ports:
       - 9870:9870
+      - 9000:9000
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
