@@ -26,7 +26,7 @@ Or deploy in swarm:
 docker stack deploy -c docker-compose-v3.yml hadoop
 ```
 
-`docker-compose` creates a docker network that can be found by running `docker network list`, e.g. `dockerhadoop_default`.
+`docker-compose` creates a docker network that can be found by running `docker network list`, e.g. `docker-hadoop_default`.
 
 Run `docker network inspect` on the network (e.g. `dockerhadoop_default`) to find the IP the hadoop interfaces are published on. Access these interfaces with the following URLs:
 
