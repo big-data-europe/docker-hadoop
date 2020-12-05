@@ -9,6 +9,8 @@ build:
 	docker build -t bde2020/hadoop-nodemanager:$(current_branch) ./nodemanager
 	docker build -t bde2020/hadoop-historyserver:$(current_branch) ./historyserver
 	docker build -t bde2020/hadoop-submit:$(current_branch) ./submit
+	docker run --name spark-master -h spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-master:3.0.1-hadoop3.2
+	docker run --name spark-worker-1 --link spark-master:spark-master -e ENABLE_INIT_DAEMON=false -d bde2020/spark-worker:3.0.1-hadoop3.2
 
 wordcount:
 	docker build -t hadoop-wordcount ./submit
