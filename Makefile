@@ -1,14 +1,15 @@
 DOCKER_NETWORK = docker-hadoop_default
 ENV_FILE = hadoop.env
 current_branch := $(shell git rev-parse --abbrev-ref HEAD)
+base_version := --build-arg HADOOP_BASE_VERSION=$(current_branch)
 build:
 	docker build -t bde2020/hadoop-base:$(current_branch) ./base
-	docker build -t bde2020/hadoop-namenode:$(current_branch) ./namenode
-	docker build -t bde2020/hadoop-datanode:$(current_branch) ./datanode
-	docker build -t bde2020/hadoop-resourcemanager:$(current_branch) ./resourcemanager
-	docker build -t bde2020/hadoop-nodemanager:$(current_branch) ./nodemanager
-	docker build -t bde2020/hadoop-historyserver:$(current_branch) ./historyserver
-	docker build -t bde2020/hadoop-submit:$(current_branch) ./submit
+	docker build -t bde2020/hadoop-namenode:$(current_branch) $(base_version) ./namenode
+	docker build -t bde2020/hadoop-datanode:$(current_branch) $(base_version) ./datanode
+	docker build -t bde2020/hadoop-resourcemanager:$(current_branch) $(base_version) ./resourcemanager
+	docker build -t bde2020/hadoop-nodemanager:$(current_branch) $(base_version) ./nodemanager
+	docker build -t bde2020/hadoop-historyserver:$(current_branch) $(base_version) ./historyserver
+	docker build -t bde2020/hadoop-submit:$(current_branch) $(base_version) ./submit
 
 wordcount:
 	docker build -t hadoop-wordcount ./submit
