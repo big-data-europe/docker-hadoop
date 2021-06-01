@@ -29,6 +29,7 @@ RUN set -x \
     && rm /tmp/hadoop.tar.gz*
 
 RUN ln -s /opt/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
+RUN ln -s /opt/hadoop-$HADOOP_VERSION /opt/hadoop
 
 RUN mkdir /opt/hadoop-$HADOOP_VERSION/logs
 
