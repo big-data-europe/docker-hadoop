@@ -7,7 +7,6 @@ services:
     restart: always
     ports:
       - 9870:9870
-      - 9000:9000
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
@@ -30,6 +29,8 @@ services:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
     container_name: resourcemanager
     restart: always
+    ports:
+      - 8088:8088
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
     env_file:
@@ -48,6 +49,8 @@ services:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
     container_name: historyserver
     restart: always
+    ports:
+      - 8188:8188
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
