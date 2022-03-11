@@ -20,6 +20,9 @@ ARG HADOOP_VERSION=3.2.1
 ENV HADOOP_VERSION $HADOOP_VERSION
 ENV HADOOP_URL https://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
 
+LABEL org.opencontainers.image.version=$HADOOP_VERSION
+LABEL org.opencontainers.image.licenses=Apache-2.0
+
 RUN set -x \
     && curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
     && curl -fSL "$HADOOP_URL.asc" -o /tmp/hadoop.tar.gz.asc \
