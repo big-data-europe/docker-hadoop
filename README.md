@@ -57,3 +57,12 @@ The available configurations are:
 * /etc/hadoop/mapred-site.xml  MAPRED_CONF
 
 If you need to extend some other configuration file, refer to base/entrypoint.sh bash script.
+
+
+set /etc/hosts
+``` ini
+# hadoop 
+127.0.0.1 namenode
+127.0.0.1 datanode
+```
+

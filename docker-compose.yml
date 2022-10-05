@@ -4,34 +4,46 @@ services:
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
     container_name: namenode
+    hostname: namenode
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=test
+    ports:
+      - 50070:50070
+      - 9000:9000
     env_file:
       - ./hadoop.env
 
   datanode:
     image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
     container_name: datanode
+    hostname: datanode
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:50070"
+    ports:
+      - 50075:50075
+      - 50010:50010
     env_file:
       - ./hadoop.env
   
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
     container_name: resourcemanager
+    hostname: resourcemanager
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
+    ports:
+      - 8088:8088
     env_file:
       - ./hadoop.env
 
   nodemanager1:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
     container_name: nodemanager
+    hostname: nodemanager1
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
@@ -40,6 +52,7 @@ services:
   historyserver:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop2.7.4-java8
     container_name: historyserver
+    hostname: historyserver
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     volumes:
