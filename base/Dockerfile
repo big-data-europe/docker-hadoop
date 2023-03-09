@@ -14,12 +14,14 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
-RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
+RUN curl -fsSL https://dist.apache.org/repos/dist/release/hadoop/common/KEYS | gpg --import -
 
-RUN gpg --import KEYS
+ARG HADOOP_VERSION=3.2.1
+ENV HADOOP_VERSION $HADOOP_VERSION
+ENV HADOOP_URL https://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
 
-ENV HADOOP_VERSION 3.2.1
-ENV HADOOP_URL https://www.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
+LABEL org.opencontainers.image.version=$HADOOP_VERSION
+LABEL org.opencontainers.image.licenses=Apache-2.0
 
 RUN set -x \
     && curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
@@ -40,8 +42,7 @@ ENV MULTIHOMED_NETWORK=1
 ENV USER=root
 ENV PATH $HADOOP_HOME/bin/:$PATH
 
-ADD entrypoint.sh /entrypoint.sh
-
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
