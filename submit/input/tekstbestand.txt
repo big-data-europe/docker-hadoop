@@ -1,0 +1,142 @@
+
+BIG DATA FOR
+EPIDEMIOLOGY: APPLIED
+DATA ANALYSIS USING
+NATIONAL HEALTH
+SURVEYS
+TIFFANY B. KINDRATT
+PEACE OSSOM-WILLIAMSON
+Mavs Open Press
+Arlington
+Big Data for Epidemiology: Applied Data Analysis Using National Health
+Surveys by Tiffany B. Kindratt is licensed under a Creative Commons
+Attribution 4.0 International License, except where otherwise noted.
+CONTENTS
+About the Publisher
+Mavs Open Press
+vii
+About This Project ix
+Acknowledgments xii
+1. Introduction 1
+2. Overview of National Health Surveys 10
+3. Literature Review 22
+4. Basic Data Analysis 36
+5. Complex Survey Design Features 60
+6. National Health Interview Survey 79
+7. Medical Expenditure Panel Survey 109
+8. Health Information National Trends Survey 138
+9. Behavioral Risk Factor Surveillance System 162
+10. National Health and Nutrition Examination
+Survey
+188
+11. Dissemination 213
+12. Conclusions 245
+Links by Chapter 267
+Image Credits 271
+ABOUT THE PUBLISHER
+MAVS OPEN PRESS
+ABOUT MAVS OPEN PRESS
+Creation of this resource was supported by Mavs Open
+Press, operated by the University of Texas at Arlington
+Libraries (UTA Libraries). Mavs Open Press offers no-
+cost services for UTA faculty, staff, and students who
+wish to openly publish their scholarship. The Libraries’
+program provides human and technological resources
+that empower our communities to publish new open
+access journals, to convert traditional print journals to
+open access publications, and to create or adapt open
+educational resources (OER). Our resources are openly
+licensed using Creative Commons licenses and are
+offered in various e-book formats free of charge, which
+can be downloaded from the Mavs Open Press OER
+catalog. Optional print copies of this text may be available
+through the UTA Bookstore or can be purchased directly
+from XanEdu, Mavs Open Press’ exclusive print provider
+and distributor.
+BIG DATA FOR EPIDEMIOLOGY VII
+ABOUT OER
+OER are free teaching and learning materials that are
+licensed to allow for revision and reuse. They can be
+fully self-contained textbooks, videos, quizzes, learning
+modules, and more. OER are distinct from public
+resources in that they permit others to use, copy,
+distribute, modify, or reuse the content. The legal
+permission to modify and customize OER to meet the
+specific learning objectives of a particular course make
+them a useful pedagogical tool.
+ABOUT PRESSBOOKS
+Pressbooks is an open source, web-based authoring tool
+based on WordPress, and it is the primary tool that Mavs
+Open Press uses to create and adapt course materials.
+Pressbooks should not be used with Internet Explorer.
+The following browsers are best to use with Pressbooks:
+• Firefox
+• Chrome
+• Safari
+• Edge
+CONTACT US
+Information about open education at UTA is available
+online. Contact us at oer@uta.edu for other inquires
+related to UTA Libraries publishing services.
+VIII TIFFANY B. KINDRATT
+ABOUT THIS PROJECT
+OVERVIEW
+National data sets provide an avenue for students to
+practice data analytic skills while also answering
+meaningful research questions. This open education
+resource was developed to train future public health
+professionals how to conduct secondary data analysis of
+national health surveys using SAS statistical software.
+SAS software was selected because it is one of the most
+commonly used software programs used among public
+health departments and academia. The book includes
+details on how to analyze public-use data from five
+common national health surveys, including the National
+Health Interview Survey (NHIS), Medical Expenditure
+Panel Survey (MEPS), Health Information National
+Trends Survey (HINTS), Behavior Risk Factor
+Surveillance System (BRFSS) and National Health and
+Nutrition and Examination Survey (NHANES). All
+datasets and corresponding syntax files are available from
+the Open ICPSR Data Repository (https://doi.org/
+10.3886/E172301V1). Future steps are to provide
+databases and syntax files for other analytic software,
+specifically STATA.
+BIG DATA FOR EPIDEMIOLOGY IX
+CREATION PROCESS
+The creation of this textbook began in March 2020. Due
+to COVID-19 pandemic challenges on teaching and
+research in higher education, final production was
+delayed. Chapters 1-8 were piloted during Spring 2021
+and Chapters 1-6 and 9-12 were piloted in Spring 2022
+to Master of Public Health students enrolled in KINE
+5386 Big Data for Epidemiology. Revisions were ongoing
+throughout the development process. Any corrections
+from the Spring 2021 pilot were made prior to the Spring
+2022 pilot. Efforts are underway for additional reviews to
+be completed by a consultant, Peace Ossom-Williamson,
+MLA.
+ABOUT THE AUTHOR
+Tiffany B. Kindratt, PhD, MPH, is an assistant professor
+in the Public Health Program, Department of
+Kinesiology, College of Nursing and Health Innovation
+at the University of Texas at Arlington. She is Director
+of the Health Survey Research Laboratory and conducts
+research focused on predisposing (e.g. race/ethnicity,
+specifically Arab/Middle Eastern and North African) and
+enabling (e.g. patient-provider communication, patient
+experiences) factors that influence individuals’ health
+behaviors, morbidity, mortality and use of health services
+across the life course using big data methodologies. She
+has an extensive background in epidemiologic and large
+database analysis, Arab/Middle Eastern and North
+African American health disparities, and training of
+medical learners. She has 13 years of experience
+analyzing large databases and complex surveys, including
+those included in this book. She currently has federal
+X TIFFANY B. KINDRATT
+research funding from the National Institutes of Health
+(National Institute on Aging) and Health Resources and
+Services Administration and has over 50 manuscripts
+published in peer reviewed scientific journals.
+BIG DATA FOR EPIDEMIOLOGY XI

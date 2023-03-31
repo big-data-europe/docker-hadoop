@@ -10,6 +10,7 @@ services:
       - 9000:9000
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
+      - ./input:/user-input
     environment:
       - CLUSTER_NAME=test
     env_file:
