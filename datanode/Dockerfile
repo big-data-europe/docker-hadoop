@@ -1,4 +1,4 @@
-FROM khalibre/hadoop-base:3.3.6
+FROM khalibre/hadoop:base-3.3.6
 
 HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
 

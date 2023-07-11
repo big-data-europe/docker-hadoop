@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: khalibre/hadoop-namenode:3.3.6
+    image: khalibre/hadoop:namenode-3.3.6
     container_name: namenode
     restart: always
     ports:
@@ -16,7 +16,7 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: khalibre/hadoop-datanode:3.3.6
+    image: khalibre/hadoop:datanode-3.3.6
     container_name: datanode
     restart: always
     volumes:
@@ -27,7 +27,7 @@ services:
       - ./hadoop.env
 
   resourcemanager:
-    image: khalibre/hadoop-resourcemanager:3.3.6
+    image: khalibre/hadoop:resourcemanager-3.3.6
     container_name: resourcemanager
     restart: always
     environment:
@@ -38,7 +38,7 @@ services:
       - "8088:8088"
 
   nodemanager1:
-    image: khalibre/hadoop-nodemanager:3.3.6
+    image: khalibre/hadoop:nodemanager-3.3.6
     container_name: nodemanager
     restart: always
     environment:
@@ -47,7 +47,7 @@ services:
       - ./hadoop.env
 
   historyserver:
-    image: khalibre/hadoop-historyserver:3.3.6
+    image: khalibre/hadoop:historyserver-3.3.6
     container_name: historyserver
     restart: always
     environment:

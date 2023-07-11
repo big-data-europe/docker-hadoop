@@ -1,6 +1,6 @@
 FROM azul/zulu-openjdk:8
 
-LABEL maintainer="John Doe <john@example.com>"
+LABEL maintainer="Sida Say <sida.say@khalibre.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     net-tools \
