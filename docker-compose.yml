@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    build: ./namenode/
     container_name: namenode
     restart: always
     ports:
@@ -10,46 +10,60 @@ services:
       - 9000:9000
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
+      - type: bind
+        source: ~/course_work/dist/assn2/
+        target: /hadoop/dfs/name/assn2/
     environment:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
 
-  datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode
+  datanode0:
+    build: ./datanode/
+    container_name: datanode0
     restart: always
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode0:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+
+  datanode1:
+    build: ./datanode/
+    container_name: datanode1
+    restart: always
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
       - ./hadoop.env
   
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    build: ./resourcemanager/
     container_name: resourcemanager
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode0:9864 datanode1:9864"
     env_file:
       - ./hadoop.env
 
-  nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+  nodemanager:
+    build: ./nodemanager/
     container_name: nodemanager
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode0:9864 datanode1:9864 resourcemanager:8088"
     env_file:
       - ./hadoop.env
   
   historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    build: ./historyserver/
     container_name: historyserver
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode0:9864 datanode1:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
@@ -57,5 +71,6 @@ services:
   
 volumes:
   hadoop_namenode:
-  hadoop_datanode:
+  hadoop_datanode0:
+  hadoop_datanode1:
   hadoop_historyserver:

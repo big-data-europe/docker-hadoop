@@ -6,10 +6,9 @@ Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
 # Hadoop Docker
 
-## Supported Hadoop Versions
-See repository branches for supported hadoop versions
-
 ## Quick Start
+
+The docker compose setup uses bind volumes. Replace those lines to bind a directory on your local file system or remove those lines if you do not want to bind any directories.
 
 To deploy an example HDFS cluster, run:
 ```
@@ -35,6 +34,18 @@ Run `docker network inspect` on the network (e.g. `dockerhadoop_default`) to fin
 * Datanode: http://<dockerhadoop_IP_address>:9864/
 * Nodemanager: http://<dockerhadoop_IP_address>:8042/node
 * Resource manager: http://<dockerhadoop_IP_address>:8088/
+
+Once deployed, run `docker ps` and ensure that the containers are healthy. If they appear to be unhealthy, you can read the logs by using the command `docker logs <container-id>`.
+
+To exec into the namenode, run `docker exec -it namenode /bin/bash`
+
+## Common issues
+
+- "Library initialization failed - unable to allocate file descriptor table"
+  You can follow the instructions present [here](https://stackoverflow.com/questions/68776387/docker-library-initialization-failed-unable-to-allocate-file-descriptor-tabl)
+- Resource manager keeps restarting because the namenode is in safemode
+  - Exec into the namenode and run `hdfs dfsadmin -safemode leave`
+  - Then, run `hdfs fsck -delete`
 
 ## Configure Environment Variables
 
